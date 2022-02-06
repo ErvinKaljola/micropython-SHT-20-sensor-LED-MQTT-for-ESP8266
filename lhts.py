@@ -186,7 +186,7 @@ def sht20_temperature(i2c):
     i2c.writeto(SHT20_I2CADDR, TRI_T_MEASURE_NO_HOLD)
     sleep_ms(150)
     origin_data = i2c.readfrom(SHT20_I2CADDR, 2)
-    origin_value = unp('>h', origin_data)[0]
+    origin_value = unp('>H', origin_data)[0]
     value = -46.85 + 175.72 * (origin_value / 65536)
   except OSError as err :
     print("sht20 temperature error: {0}".format(err))
